@@ -1,9 +1,10 @@
 import { app } from "./app";
 import { cadastrarTurma } from "./endpoints/cadastrarTurma"
+import { buscarTurmasAtivas } from "./endpoints/bascarTurmasAtivas"
 
 // turma
 app.post("/turma", cadastrarTurma )
-//app.get("/turma", buscarTurmasAtivas )
+app.get("/turma", buscarTurmasAtivas )
 //app.put("/turma", mudarModulo)
 
 //estudante
