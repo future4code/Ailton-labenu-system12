@@ -1,0 +1,16 @@
+POST http://localhost:3003/turma
+Content-Type: application/json
+{
+    "nome": "Zuckerber",
+    "modulo": 1
+}
+
+###
+
+GET http://localhost:3003/turma
+Content-Type: application/json
+
+###
+
+PUT http://localhost:3003/turma
+Content-Type: application/json

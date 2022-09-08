@@ -1,7 +1,8 @@
 import { app } from "./app";
+import { cadastrarTurma } from "./endpoints/cadastrarTurma"
 
 // turma
-//app.post("/turma", cadastrarTurma )
+app.post("/turma", cadastrarTurma )
 //app.get("/turma", buscarTurmasAtivas )
 //app.put("/turma", mudarModulo)
 
