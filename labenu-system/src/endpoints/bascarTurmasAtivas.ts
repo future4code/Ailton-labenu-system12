@@ -1,3 +1,4 @@
+import { Request, Response } from "express"
 import { selecionarTurmas } from "../data/selecionarTurmas"
 
 export async function buscarTurmasAtivas(req: Request, res:Response){

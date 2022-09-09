@@ -11,7 +11,7 @@ const tipoTurma = (turma:any) =>{
 }
 export async function selecionarTurmas(): Promise<AdcTurma[] | undefined>{
     
-    const resultado = await connection("turmas")
+    const resultado = await connection("turma")
 
     const todasAsTurmas = resultado.map((turma)=>{
         return tipoTurma(turma)
