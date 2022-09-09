@@ -1,10 +1,10 @@
 export type Turma = {
     nome: string,
-    modulo: number
+    modulo: string
 }
 
 export type AdcTurma = {
     id: string,
     nome: string,
-    modulo: number
+    modulo: string
 }

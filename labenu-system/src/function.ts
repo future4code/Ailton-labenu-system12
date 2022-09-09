@@ -1,4 +1,4 @@
-import { AdcTurma } from "./src/types/turma";
+import { AdcTurma } from "./types/turma";
 
 export const tipoTurma = (turma:any) => {
 

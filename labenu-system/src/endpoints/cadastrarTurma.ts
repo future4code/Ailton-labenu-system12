@@ -19,5 +19,7 @@ export async function cadastrarTurma (req: Request, res: Response){
         const resposta = await inserirTurma(adicionarTurma)
 
         res.status(201).send({message:resposta})
-    } catch(error: any){}
+    } catch(error: any){
+        res.status(500). send({message:error.message})
+    }
 }
