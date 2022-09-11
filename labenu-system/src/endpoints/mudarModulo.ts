@@ -1,26 +1,28 @@
 import { Request, Response } from "express";
 import { idTurmaSelecionada } from "../data/idTurmaSelecionada";
 import { Turma } from "../types/turma";
+import { alteraModulo } from "../data/alteraModulo"
 
 
 export async function mudarModulo (req:Request, res:Response){
     try{
-        const turmaId = req.params.turmaId
+        const {turmaId, modulo} = req.body
 
-        const turmaSelecionada = idTurmaSelecionada(turmaId)
-        if(!turmaSelecionada){
-            throw new Error( "Turma não encontrada ")
+        if(!turmaId || !modulo){
+            throw new Error( "Turma não encontrada.")
         }
         
-        const {nome, modulo} : Turma = req.body;
-        if (!nome || !modulo) {
-            throw new Error ("Preencha os campos para continuar.")
+        const turmaCadastrada = await idTurmaSelecionada(turmaId)
+
+        if(!turmaCadastrada){
+            throw new Error("Id dessa turma não existe.")
         }
-        const novoModulo = {
-            nome,
-            modulo
+        if(modulo === "0"){
+            throw new Error("Não é possível alterar turma para o modulo 0.")
         }
-        turmaSelecionada.push(novoModulo)
+
+        await alteraModulo(turmaId, modulo)
+        res.status(200).send({message: "Modulo alterado com sucesso."})
 
     } catch (error: any){
         res.status(500). send({message:error.message})

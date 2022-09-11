@@ -1,13 +1,16 @@
 import { AdcTurma } from "../types/turma";
 import { connection } from "./baseDataBase";
+import { tiparTurma } from "../function"
 
-export async function idTurmaSelecionada(turmaId:string):Promise<AdcTurma | undefined>{
-    const [ resultado ] = await connection("turma").select("*").where({id:turmaId})
+export async function idTurmaSelecionada(turmaId:string):Promise<AdcTurma[] | undefined>{
+    const [ resultado ] = await connection().select("*").from("turma").where("modulo","like",`%${turmaId}%`)
 
-    const tipoDaTurma: AdcTurma = {
-        id: resultado.id,
-        nome: resultado.nome,
-        modulo: resultado.modulo,
+    if(resultado){
+        const tipoTurma = resultado.map((turma: any)=>{
+            return tiparTurma(turma)
+        })
+        return tipoTurma
+    } else {
+        return undefined
     }
-    return tipoDaTurma
 }
